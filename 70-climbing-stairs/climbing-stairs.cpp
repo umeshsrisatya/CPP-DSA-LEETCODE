@@ -12,8 +12,10 @@ private:
             dp[n-1] = fun(n-1, dp);
         }
         // jump two step;
-        if(dp[n-2] == 0){
-            dp[n-2] = fun(n-2, dp);
+        if(n>=2){
+            if(dp[n-2] == 0){
+                dp[n-2] = fun(n-2, dp);
+            }
         }
                
         dp[n] = dp[n-1]+ dp[n-2];
