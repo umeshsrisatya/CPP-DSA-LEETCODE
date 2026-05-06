@@ -1,25 +1,19 @@
 class NumArray {
 public:
-    vector<int> nums;
-    vector<int> pleft;
+    int pre_sum[10000];
     NumArray(vector<int>& nums) {
-        this->nums = nums;
         int n = nums.size();
-        vector<int> lsum(n, 0);
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += nums[i];
-            lsum[i] = sum;
+        pre_sum[0] = nums[0];
+        for(int i = 1; i < n; i++){
+            pre_sum[i] = pre_sum[i-1]+nums[i];
         }
-        
-        this->pleft = lsum;
     }
-
+    int sum = 0;
     int sumRange(int left, int right) {
         if(left == 0){
-            return pleft[right];
+            return pre_sum[right];
         }
-        return pleft[right]-pleft[left-1];
+        return pre_sum[right]-pre_sum[left-1];
     }
 };
 
