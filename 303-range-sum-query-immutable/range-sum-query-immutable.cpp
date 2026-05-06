@@ -1,8 +1,9 @@
 class NumArray {
 public:
-    int pre_sum[10000];
+     vector<int> pre_sum;
     NumArray(vector<int>& nums) {
         int n = nums.size();
+        pre_sum.resize(n);
         pre_sum[0] = nums[0];
         for(int i = 1; i < n; i++){
             pre_sum[i] = pre_sum[i-1]+nums[i];
@@ -13,6 +14,7 @@ public:
         if(left == 0){
             return pre_sum[right];
         }
+        
         return pre_sum[right]-pre_sum[left-1];
     }
 };
