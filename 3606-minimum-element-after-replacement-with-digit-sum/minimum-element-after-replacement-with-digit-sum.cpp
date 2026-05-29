@@ -12,8 +12,7 @@ public:
     int minElement(vector<int>& nums) {
         int mini = INT_MAX;
         for(int i = 0; i < nums.size(); i++){
-            int val = sumOfDigits(nums[i]);
-            mini = min(val, mini);
+            mini = min(sumOfDigits(nums[i]), mini);
         }
         return mini;
     }
