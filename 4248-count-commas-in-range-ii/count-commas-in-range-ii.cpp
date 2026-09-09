@@ -2,16 +2,12 @@ class Solution {
 public:
     long long countCommas(long long n) {
         long long c = 0;
-        if (n > 999999999999999)
-            c+=max(n - 999999999999999, 0LL);
-        if (n > 999999999999)
-            c+=max(n - 999999999999, 0LL);
-        if (n > 999999999)
-            c+=max(n - 999999999, 0LL);
-        if (n > 999999)
-            c+=max(n - 999999, 0LL);
-        if (n > 999)
-            c+=max(n - 999, 0LL);
+        for (int i = 3; i <= 15; i += 3) {
+            long long p = pow(10, i);
+            if (n >= p) {
+                c += max(n-(p - 1), 0LL);
+            }
+        }
         return c;
     }
 };
